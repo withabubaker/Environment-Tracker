@@ -1,0 +1,199 @@
+[
+    {
+        "id": "13f2547725abc7a0",
+        "type": "pareto-anywhere-socketio",
+        "z": "461a6d760a8703e7",
+        "uri": "http://:3001",
+        "name": "",
+        "x": 100,
+        "y": 260,
+        "wires": [
+            [],
+            [
+                "1835cff44840b753",
+                "eb4e8419d633fe2c"
+            ]
+        ]
+    },
+    {
+        "id": "621414f4c8bc5247",
+        "type": "ui_gauge",
+        "z": "461a6d760a8703e7",
+        "name": "",
+        "group": "a06536f52d5f462a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{msg.payload.temperature}}",
+        "min": "-60",
+        "max": "50",
+        "colors": [
+            "#1500b3",
+            "#00e626",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "27",
+        "diff": false,
+        "className": "",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "80a92c2cb829bdd7",
+        "type": "ui_gauge",
+        "z": "461a6d760a8703e7",
+        "name": "",
+        "group": "a06536f52d5f462a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "RH%",
+        "format": "{{msg.payload.humidity}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b34700",
+            "#00e626",
+            "#3a52cb"
+        ],
+        "seg1": "30",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 580,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "1835cff44840b753",
+        "type": "function",
+        "z": "461a6d760a8703e7",
+        "name": "Send to Dashboard",
+        "func": "var temperature = (msg.payload.temperature !== undefined)\n        ? msg.payload.temperature.toFixed(2)\n        : \"Temperatur note found\";\n\nvar humidity = (msg.payload.relativeHumidity !== undefined)\n        ? msg.payload.relativeHumidity.toFixed(2)\n        : \"Humidity not found\"\n\n        \n//var timestamp = msg.payload.timestamp;\n\nvar currentDateTIme = new Date();\n\n// Create a new message object to pass both values\nmsg.payload = {\n        temperature: temperature,\n        humidity: humidity,\n       // timestamp: timestamp\n       currDateTime: currentDateTIme.toLocaleString()\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "621414f4c8bc5247",
+                "80a92c2cb829bdd7",
+                "9674585d25d13187"
+            ]
+        ]
+    },
+    {
+        "id": "0bb7e9a353ce7fe0",
+        "type": "MSSQL",
+        "z": "461a6d760a8703e7",
+        "mssqlCN": "40f1d31a77c28895",
+        "name": "",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": 1,
+        "query": "",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "payload",
+        "queryOptType": "editor",
+        "paramsOpt": "",
+        "paramsOptType": "none",
+        "rows": "rows",
+        "rowsType": "msg",
+        "parseMustache": true,
+        "params": [],
+        "x": 600,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb4e8419d633fe2c",
+        "type": "function",
+        "z": "461a6d760a8703e7",
+        "name": "INSERT data into MS SQL",
+        "func": "var temperature = (msg.payload.temperature !== undefined)\n    ? msg.payload.temperature.toFixed(2)\n    : null;\n\nvar humidity = (msg.payload.relativeHumidity !== undefined)\n    ? msg.payload.relativeHumidity.toFixed(2)\n    : null;\n    \n//var timestamp = new Date(msg.payload.timestamp).toISOString(); // Adjust timestamp format if needed\n\nvar timestamp = Number(msg.payload.timestamp);\nvar date = new Date(timestamp);\n\nvar options = {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    hour: '2-digit',\n    minute: '2-digit',\n    second: '2-digit',\n    hour12: false, // Use 24-hour format\n    timeZone: 'America/Toronto'\n};\n\nvar torontoDateString = date.toLocaleString('en-CA', options).replace(',', '');\nvar sqlFormattedDate = torontoDateString.replace(/\\/(\\d{1,2})\\//, '-$1-').replace(' ', ' ').substring(0, 19);\n\n\nmsg.payload = \"INSERT INTO TempHumidity (date_Time, temp, Humidity) VALUES ('\" \n            + sqlFormattedDate + \"', \" + (temperature !== null ? temperature : 'NULL') + \", \" + (humidity !== null ? humidity : 'NULL') + \")\";\n\n\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "0bb7e9a353ce7fe0"
+            ]
+        ]
+    },
+    {
+        "id": "9674585d25d13187",
+        "type": "ui_text",
+        "z": "461a6d760a8703e7",
+        "group": "a06536f52d5f462a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Date and Time",
+        "format": "{{msg.payload.currDateTime}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 600,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a06536f52d5f462a",
+        "type": "ui_group",
+        "name": "HVAC",
+        "tab": "fd1ec04ec88aefeb",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "40f1d31a77c28895",
+        "type": "MSSQL-CN",
+        "tdsVersion": "7_4",
+        "name": "HVAC DB connection",
+        "server": "192.168.2.45",
+        "port": "1433",
+        "encyption": false,
+        "trustServerCertificate": false,
+        "database": "HVAC",
+        "useUTC": true,
+        "connectTimeout": "20000",
+        "requestTimeout": "20000",
+        "cancelTimeout": "20000",
+        "pool": "5",
+        "parseJSON": false,
+        "enableArithAbort": true,
+        "readOnlyIntent": false
+    },
+    {
+        "id": "fd1ec04ec88aefeb",
+        "type": "ui_tab",
+        "name": "Smart Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
