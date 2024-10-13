@@ -1,6 +1,6 @@
 # Tracking Temperature and Humidity using S1 Minew Device, Pareto Anywhere, Node-Red, and MS SQL database
 
-![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/dashboard-Screen.jpg)
+![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/IMG/dashboard-Screen.jpg)
 
 
 ## Project Goals:
@@ -23,7 +23,7 @@
 
 1. Install Pareto Anywhere on Raspberry Pi. Follow the step-by-step instructions available [here](https://reelyactive.github.io/diy/pareto-anywhere-pi/).
    Pareto Anywhere is an IoT middleware that makes extracting data from BLE devices much easier, and it can be installed on local, cloud, and Edge devices.
-   
+   ![alt_text](https://github.com/withabubaker/Environment-Tracker/blob/main/IMG/ParetoAnywhereScreen.jpg)
 3. Install Node-Red on Raspberry Pi. Step-by-step instructions available [here](https://nodered.org/docs/getting-started/raspberrypi)
 4. If required, you can store the data in a database, here I used [MS SQL Server Express edition](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads)
 5. Configure Node-Red nodes as required, or import the attached flow.json file. The flow contains these pallets:
@@ -31,7 +31,7 @@
      - ***node-red-contrib-mssql-plus***: connect to MS SQL Server.
      - ***node-red-dashboard***: Node-REd Dashboard.
 
-  ![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/nodes-screen.jpg)
+  ![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/IMG/nodes-screen.jpg)
 
 
 ## Files:
