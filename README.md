@@ -10,7 +10,7 @@
 - Store the data in MS SQL database for further analysis.
 
 
-## Libraries & Tools & Hardware:
+## Tools & Hardware:
 
 1. Raspberry Pi 4
 2. Pareto Anywhere
