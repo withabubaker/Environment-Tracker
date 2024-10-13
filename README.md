@@ -31,7 +31,7 @@
      - ***node-red-contrib-mssql-plus***: connect to MS SQL Server.
      - ***node-red-dashboard***: Node-REd Dashboard.
 
-  ![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/dashboard-Screen.jpg)
+  ![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/nodes-screen.jpg)
 
 
 ## Files:
