@@ -22,7 +22,7 @@
 ## Installation:
 
 1. Install Pareto Anywhere on Raspberry Pi. Follow the step-by-step instructions available [here](https://reelyactive.github.io/diy/pareto-anywhere-pi/).
-   Pareto Anywhere is an IoT middleware that makes extracting data from BLE devices much easier, and it can be installed on local, cloud, and Edge.
+   Pareto Anywhere is an IoT middleware that makes extracting data from BLE devices much easier, and it can be installed on local, cloud, and Edge devices.
    
 3. Install Node-Red on Raspberry Pi. Step-by-step instructions available [here](https://nodered.org/docs/getting-started/raspberrypi)
 4. If required, you can store the data in a database, here I used [MS SQL Server Express edition](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads)
