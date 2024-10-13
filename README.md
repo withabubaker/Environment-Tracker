@@ -1,4 +1,4 @@
-# Tracking Temperature and Humidity using S1 Minew Device, Pareto Anywhere, Node-Red and MS SQL database
+# Tracking Temperature and Humidity using S1 Minew Device, Pareto Anywhere, Node-Red, and MS SQL database
 
 ![alt text](https://github.com/withabubaker/Environment-Tracker/blob/main/dashboard-Screen.jpg)
 
