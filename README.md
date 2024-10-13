@@ -13,7 +13,7 @@
 ## Tools & Hardware:
 
 1. Raspberry Pi 4
-2. Pareto Anywhere
+2. [Pareto Anywhere](https://www.reelyactive.com/pareto/anywhere/)
 3. S1 Minew Device
 4. Node-Red
 5. MS SQL Server Express Edition
