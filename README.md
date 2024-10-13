@@ -26,8 +26,10 @@
    
 3. Install Node-Red on Raspberry Pi. Step-by-step instructions available [here](https://nodered.org/docs/getting-started/raspberrypi)
 4. If required, you can store the data in a database, here I used [MS SQL Server Express edition](https://www.microsoft.com/en-ca/sql-server/sql-server-downloads)
-5. Configure Node-Red nodes as required. or import the attached flow.json file. The flow contains these pallets:
-     - @reelyactive/node-red-pareto-anywhere : to pull the data from Pareto Anywhere 
+5. Configure Node-Red nodes as required, or import the attached flow.json file. The flow contains these pallets:
+     - ***@reelyactive/node-red-pareto-anywhere***: to pull the data from Pareto Anywhere.
+     - ***node-red-contrib-mssql-plus***: connect to MS SQL Server.
+     - ***node-red-dashboard***: Node-REd Dashboard.
 
 
 
