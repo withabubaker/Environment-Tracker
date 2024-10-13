@@ -21,7 +21,7 @@
 
 ## Installation:
 
-1. install Pareto Anywhere on Raspberry pi 4. Step-by-step instructions availalbe [here[(https://reelyactive.github.io/diy/pareto-anywhere-pi/) 
+1. install Pareto Anywhere on Raspberry pi 4. Step-by-step instructions available [here](https://reelyactive.github.io/diy/pareto-anywhere-pi/) 
 
 ## Files:
 - ***flow.json***: flow nodes.
