@@ -17,6 +17,7 @@
 3. [Minew S1 BLE Sensor](https://www.minew.com/product/s1-ble-temperature-and-humidity-sensor/).
 4. Node-Red.
 5. MS SQL Server Express Edition.
+6. Grafana & Prometheus for Services Monitoring.
 
 
 ## Installation:
